@@ -8,15 +8,15 @@ import java.awt.CardLayout;
 
 public class Janela extends JFrame{
     private JPanel Principal;
-    private JPanel telaVisaoGeral;
-    private JPanel telaMoradores;
-    private JPanel telaMissoes;
-    private JPanel telasPrincipais;
+    private JPanel TelaVisaoGeral;
+    private JPanel TelaMoradores;
+    private JPanel TelaMissoes;
+    private JPanel TelasPrincipais;
     private JButton visaoGeralButton;
     private JButton moradoresButton;
     private JButton missoesButton;
     private JButton gerenciarButton;
-    private JPanel telaGerenciar;
+    private JPanel TelaGerenciar;
     private JTable tabelaMoradores2;
     private JTable tabelaMissoes2;
     private JButton pesquisarButton;
@@ -44,29 +44,29 @@ public class Janela extends JFrame{
         setResizable(false);
         setLocationRelativeTo(null);
 
-        telasPrincipais.add(telaVisaoGeral, "visaoGeral");
-        telasPrincipais.add(telaMoradores, "moradores");
-        telasPrincipais.add(telaMissoes, "missoes");
-        telasPrincipais.add(telaGerenciar, "gerenciar");
+        TelasPrincipais.add(TelaVisaoGeral, "visaoGeral");
+        TelasPrincipais.add(TelaMoradores, "moradores");
+        TelasPrincipais.add(TelaMissoes, "missoes");
+        TelasPrincipais.add(TelaGerenciar, "gerenciar");
 
 
         // A partir daqui TESTES de mudança de página, levar para Controller depois----------------------------------------------
 
         visaoGeralButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (telasPrincipais.getLayout());
-            cl.show(telasPrincipais, "visaoGeral");
+            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
+            cl.show(TelasPrincipais, "visaoGeral");
         });
         moradoresButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (telasPrincipais.getLayout());
-            cl.show(telasPrincipais, "moradores");
+            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
+            cl.show(TelasPrincipais, "moradores");
         });
         missoesButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (telasPrincipais.getLayout());
-            cl.show(telasPrincipais, "missoes");
+            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
+            cl.show(TelasPrincipais, "missoes");
         });
         gerenciarButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (telasPrincipais.getLayout());
-            cl.show(telasPrincipais, "gerenciar");
+            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
+            cl.show(TelasPrincipais, "gerenciar");
         });
     }
 }
