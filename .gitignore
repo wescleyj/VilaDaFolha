@@ -1,0 +1,25 @@
+# Arquivos compilados do Java
+*.class
+target/
+build/
+out/
+
+# Logs
+*.log
+
+# Arquivos de IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.project
+.classpath
+.settings/
+
+# Arquivos do sistema operacional
+.DS_Store
+Thumbs.db
+
+# Pacotes e dependências
+/node_modules
+/vendor
