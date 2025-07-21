@@ -1,7 +1,12 @@
 package principal.view;
 
+import principal.controller.Controller;
+import principal.model.Model;
+
 public class App {
     public static void main(String[] args) {
-        new Janela();
+        Janela janela = new Janela();
+        Model model = new Model();
+        Controller controller = new Controller(model, janela);
     }
 }

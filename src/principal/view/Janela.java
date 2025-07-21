@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTable;
-import java.awt.CardLayout;
 
 public class Janela extends JFrame{
     private JPanel Principal;
@@ -29,8 +28,6 @@ public class Janela extends JFrame{
     private JTable tabelaMissoes;
     private JTable tabelaMoradores;
     private JPanel MenuLateral;
-
-    // Adicionar confirmação antes dos botões a seguir -----------------------------------------------------------------------
     private JButton deletarMissoesButton;
     private JButton deletarTodosOsDadosButton;
     private JButton deletarMoradoresButton;
@@ -43,30 +40,110 @@ public class Janela extends JFrame{
         setVisible(true);
         setResizable(false);
         setLocationRelativeTo(null);
-
         TelasPrincipais.add(TelaVisaoGeral, "visaoGeral");
         TelasPrincipais.add(TelaMoradores, "moradores");
         TelasPrincipais.add(TelaMissoes, "missoes");
         TelasPrincipais.add(TelaGerenciar, "gerenciar");
 
+    }
 
-        // A partir daqui TESTES de mudança de página, levar para Controller depois----------------------------------------------
+    public JPanel getPrincipal() {
+        return Principal;
+    }
 
-        visaoGeralButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
-            cl.show(TelasPrincipais, "visaoGeral");
-        });
-        moradoresButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
-            cl.show(TelasPrincipais, "moradores");
-        });
-        missoesButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
-            cl.show(TelasPrincipais, "missoes");
-        });
-        gerenciarButton.addActionListener(e -> {
-            CardLayout cl = (CardLayout) (TelasPrincipais.getLayout());
-            cl.show(TelasPrincipais, "gerenciar");
-        });
+    public JPanel getTelaVisaoGeral() {
+        return TelaVisaoGeral;
+    }
+
+    public JPanel getTelaMoradores() {
+        return TelaMoradores;
+    }
+
+    public JPanel getTelaMissoes() {
+        return TelaMissoes;
+    }
+
+    public JPanel getTelasPrincipais() {
+        return TelasPrincipais;
+    }
+
+    public JButton getVisaoGeralButton() {
+        return visaoGeralButton;
+    }
+
+    public JButton getMoradoresButton() {
+        return moradoresButton;
+    }
+
+    public JButton getMissoesButton() {
+        return missoesButton;
+    }
+
+    public JButton getGerenciarButton() {
+        return gerenciarButton;
+    }
+
+    public JPanel getTelaGerenciar() {
+        return TelaGerenciar;
+    }
+
+    public JTable getTabelaMoradores2() {
+        return tabelaMoradores2;
+    }
+
+    public JTable getTabelaMissoes2() {
+        return tabelaMissoes2;
+    }
+
+    public JButton getPesquisarButton() {
+        return pesquisarButton;
+    }
+
+    public JButton getRemoverButton() {
+        return removerButton;
+    }
+
+    public JButton getAdicionarButton() {
+        return adicionarButton;
+    }
+
+    public JButton getPesquisarButton1() {
+        return pesquisarButton1;
+    }
+
+    public JButton getRemoverButton1() {
+        return removerButton1;
+    }
+
+    public JButton getAdicionarButton1() {
+        return adicionarButton1;
+    }
+
+    public JButton getSalvarButton2() {
+        return salvarButton2;
+    }
+
+    public JTable getTabelaMissoes() {
+        return tabelaMissoes;
+    }
+
+    public JTable getTabelaMoradores() {
+        return tabelaMoradores;
+    }
+
+    public JPanel getMenuLateral() {
+        return MenuLateral;
+    }
+
+    public JButton getDeletarMissoesButton() {
+        return deletarMissoesButton;
+    }
+
+    public JButton getDeletarTodosOsDadosButton() {
+        return deletarTodosOsDadosButton;
+    }
+
+    public JButton getDeletarMoradoresButton() {
+        return deletarMoradoresButton;
     }
 }
