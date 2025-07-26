@@ -1,6 +1,6 @@
 package principal.model;
 
 public enum TipoNinja {
-    GENIN, CHUUNIN, JOUNIN, ANBU, HOKAGE
+    GENIN, CHUUNIN, JOUNIN, KAGE
 
 }
