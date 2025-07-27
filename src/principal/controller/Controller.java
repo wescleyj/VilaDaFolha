@@ -425,6 +425,7 @@ public class Controller {
         };
         janela.getTabelaMissoes().setModel(modelo);
         janela.getTabelaMissoesResumo().setModel(modelo); // Atualiza a tabela de resumo também
+        janela.getNumMissoes().setText(Integer.toString(model.getMissoes().size())); // atualiza o contador de moradores no resumo
     }
 
     /**
