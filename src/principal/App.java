@@ -1,7 +1,8 @@
-package principal.view;
+package principal;
 
 import principal.controller.Controller;
 import principal.model.Model;
+import principal.view.Janela;
 
 public class App {
     public static void main(String[] args) {
