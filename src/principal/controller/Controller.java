@@ -26,6 +26,11 @@ public class Controller {
 
     // Adicionando eventos nos botões de mudança de tela e logica de controle de mudança de panels
     private void adicionarEventosBotoes() {
+        botoesEventosMenuLateral();
+        botoesEventosMorador();
+    }
+
+    private void botoesEventosMenuLateral() {
         janela.getVisaoGeralButton().addActionListener(e -> {
             CardLayout cl = (CardLayout) (janela.getTelasPrincipais().getLayout());
             cl.show(janela.getTelasPrincipais(), "visaoGeral");
@@ -45,8 +50,6 @@ public class Controller {
             CardLayout cl = (CardLayout) (janela.getTelasPrincipais().getLayout());
             cl.show(janela.getTelasPrincipais(), "gerenciar");
         });
-
-        botoesEventosMorador();
     }
 
     private void botoesEventosMorador(){
@@ -85,23 +88,36 @@ public class Controller {
             return;
 
         String[] colunas = {"Nome", "Idade", "Sexo", "Status", "Detalhes"};
+        String[] colunasResumo = {"Nome", "Status", "Detalhes"};
         Object[][] dados = new Object[moradores.size()][colunas.length];
+        Object[][] dadosResumo = new Object[moradores.size()][colunasResumo.length];
 
         for(int i = 0; i < moradores.size(); i++) {
             Morador morador = moradores.get(i);
+
             dados[i][0] = morador.getNome();
             dados[i][1] = morador.getIdade();
             dados[i][2] = morador.getSexo();
             dados[i][3] = morador.getStatus();
+
             if(morador instanceof Ninja)
                 dados[i][4] = ((Ninja) morador).getTipo();
+
             else
                 dados[i][4] = ((Civil) morador).getProfissao();
+
+            dadosResumo[i][0] = dados[i][0];
+            dadosResumo[i][1] = dados[i][3];
+            dadosResumo[i][2] = dados[i][4];
+
         }
 
         janela.getTabelaMoradores().setModel(new javax.swing.table.DefaultTableModel(dados, colunas));
-        model.salvarMoradores(); //salva sempre que a tabela atualizar
 
+        janela.getTabelaMoradores2().setModel(new javax.swing.table.DefaultTableModel(dadosResumo, colunasResumo));
+        janela.getNumPopulacao().setText(Integer.toString(model.getMoradores().size())); // atualiza o contador de moradores no resumo
+
+        model.salvarMoradores(); //salva sempre que a tabela atualizar
     }
 
     private void botaoRemoverMorador(){

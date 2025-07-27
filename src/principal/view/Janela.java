@@ -1,9 +1,6 @@
 package principal.view;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JTable;
+import javax.swing.*;
 
 public class Janela extends JFrame{
     private JPanel Principal;
@@ -31,6 +28,7 @@ public class Janela extends JFrame{
     private JButton deletarMissoesButton;
     private JButton deletarTodosOsDadosButton;
     private JButton deletarMoradoresButton;
+    private JLabel numPopulacao;
 
     public Janela() {
         setTitle("Sistema de Gerenciamento da aldeia da folha");
@@ -44,7 +42,6 @@ public class Janela extends JFrame{
         TelasPrincipais.add(TelaMoradores, "moradores");
         TelasPrincipais.add(TelaMissoes, "missoes");
         TelasPrincipais.add(TelaGerenciar, "gerenciar");
-
     }
 
     public JPanel getPrincipal() {
@@ -145,5 +142,9 @@ public class Janela extends JFrame{
 
     public JButton getDeletarMoradoresButton() {
         return deletarMoradoresButton;
+    }
+
+    public JLabel getNumPopulacao() {
+        return numPopulacao;
     }
 }
