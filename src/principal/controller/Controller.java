@@ -15,8 +15,8 @@ import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Controller {
-    private Model model;
-    private Janela janela;
+    private final Model model;
+    private final Janela janela;
 
     public Controller(Model model, Janela janela) {
         this.model = model;
@@ -58,6 +58,7 @@ public class Controller {
         botaoAdicionarMorador();
         botaoRemoverMorador();
         botaoPesquisarMorador();
+        atualizarTabelaMoradoresMostrarTodos();
     }
 
     private void botaoPesquisarMorador(){
@@ -78,8 +79,15 @@ public class Controller {
             else {
                 atualizarTabelaMoradores(encontrados);
                 JOptionPane.showMessageDialog(janela, encontrados.size() + " morador(es) encontrado(s).");
+                janela.getMoradoresMostrarTodos().setEnabled(true);
             }
+        });
+    }
 
+    private void atualizarTabelaMoradoresMostrarTodos(){
+        janela.getMoradoresMostrarTodos().addActionListener(e -> {
+            atualizarTabelaMoradores(model.getMoradores());
+            janela.getMoradoresMostrarTodos().setEnabled(false);
         });
     }
 
