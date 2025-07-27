@@ -4,6 +4,8 @@ package principal.model;
  * Representa um morador civil, herdando os campos comuns de Morador e adicionando a profissão.
  */
 public class Civil extends Morador{
+    /** Profissão exercida pelo civil.
+     */
     private String profissao;
 
     /**

@@ -5,9 +5,13 @@ package principal.model;
  * Deve ser estendida por tipos específicos de moradores.
  */
 public abstract class Morador {
+    /** Nome do morador. */
     private String nome;
+    /** Idade do morador. */
     private int idade;
+    /** Sexo do morador. */
     private Sexo sexo;
+    /** Status atual do morador. */
     private Status status;
 
     /**

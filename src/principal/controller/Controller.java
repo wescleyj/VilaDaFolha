@@ -22,7 +22,9 @@ import principal.model.NivelMissoes;
  * Gerencia eventos dos botões, atualização de tabelas e lógica de adição, remoção, pesquisa e exibição de moradores.
  */
 public class Controller {
+    /** Referência para o modelo de dados da aplicação. */
     private final Model model;
+    /** Referência para a interface gráfica principal da aplicação. */
     private final Janela janela;
 
     /**
