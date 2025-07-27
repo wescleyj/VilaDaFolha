@@ -92,4 +92,8 @@ public class Model {
     public void removerMissao(Missao missao) {
         missoes.remove(missao);
     }
+
+    public void SalvarMissoes() {
+        missaoDAO.salvarMissoes(missoes);
+    }
 }

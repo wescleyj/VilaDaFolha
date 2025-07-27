@@ -156,6 +156,7 @@ public class Controller {
     private void botaoSalvar(){
         janela.getSalvarButton().addActionListener(e -> {
             model.salvarMoradores();
+            model.SalvarMissoes();
             //adicionar aqui a lógica para salvar as missões
         });
     }
