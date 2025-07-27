@@ -2,6 +2,10 @@ package principal.model;
 
 /**
  * Representa um morador civil, herdando os campos comuns de Morador e adicionando a profissão.
+ * @author Giovanni Estevam dos Santos
+ * @author João Vitor Lopes Fagundes
+ * @author Pedro Ricoy de Oliveira e Silva
+ * @author Wescley Júnior Gonçalves Navarro
  */
 public class Civil extends Morador{
     /** Profissão exercida pelo civil.

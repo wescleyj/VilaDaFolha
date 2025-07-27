@@ -3,6 +3,10 @@ package principal.model;
 /**
  * Classe abstrata que define os campos comuns a todos os moradores da vila.
  * Deve ser estendida por tipos específicos de moradores.
+ * @author Giovanni Estevam dos Santos
+ * @author João Vitor Lopes Fagundes
+ * @author Pedro Ricoy de Oliveira e Silva
+ * @author Wescley Júnior Gonçalves Navarro
  */
 public abstract class Morador {
     /** Nome do morador. */

@@ -14,6 +14,10 @@ import java.util.List;
 /**
  * Classe responsável pelo acesso e persistência dos dados das missões.
  * Permite salvar e carregar informações de missões em um arquivo CSV.
+ * @author Giovanni Estevam dos Santos
+ * @author João Vitor Lopes Fagundes
+ * @author Pedro Ricoy de Oliveira e Silva
+ * @author Wescley Júnior Gonçalves Navarro
  */
 public class MissaoDAO {
     private final String ARQUIVO = "missoes.csv";

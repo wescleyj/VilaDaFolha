@@ -119,7 +119,6 @@ public class Janela extends JFrame{
 
     // --- GETTERS PARA ACESSO AOS COMPONENTES (PARA O CONTROLLER) ---
 
-
     /**
      * Retorna o painel principal da janela.
      * @return O {@code JPanel} principal.

@@ -8,6 +8,10 @@ import java.util.List;
 
 /**
  * Representa o modelo principal da aplicação, contendo a lista de moradores e o DAO responsável pela persistência.
+ * @author Giovanni Estevam dos Santos
+ * @author João Vitor Lopes Fagundes
+ * @author Pedro Ricoy de Oliveira e Silva
+ * @author Wescley Júnior Gonçalves Navarro
  */
 public class Model {
     /** Lista de moradores gerenciada pelo modelo. */

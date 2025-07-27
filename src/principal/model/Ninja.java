@@ -2,6 +2,10 @@ package principal.model;
 
 /**
  * Representa um morador ninja, herdando os campos comuns de Morador e adicionando o tipo de ninja.
+ * @author Giovanni Estevam dos Santos
+ * @author João Vitor Lopes Fagundes
+ * @author Pedro Ricoy de Oliveira e Silva
+ * @author Wescley Júnior Gonçalves Navarro
  */
 public class Ninja extends Morador{
     /** Patente do ninja.

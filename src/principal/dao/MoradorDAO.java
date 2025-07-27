@@ -18,6 +18,10 @@ import java.util.List;
 /**
  * Classe responsável pelo acesso e persistência dos dados dos moradores da vila.
  * Permite salvar e carregar informações de moradores (Ninja e Civil) em um arquivo CSV.
+ * @author Giovanni Estevam dos Santos
+ * @author João Vitor Lopes Fagundes
+ * @author Pedro Ricoy de Oliveira e Silva
+ * @author Wescley Júnior Gonçalves Navarro
  */
 public class MoradorDAO {
     /** Nome do arquivo que armazena os moradores

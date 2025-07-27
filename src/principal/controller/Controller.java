@@ -20,6 +20,11 @@ import principal.model.NivelMissoes;
 /**
  * Classe responsável por controlar a interação entre a interface gráfica (Janela) e o modelo de dados (Model).
  * Gerencia eventos dos botões, atualização de tabelas e lógica de adição, remoção, pesquisa e exibição de moradores.
+ *
+ *  * @author Giovanni Estevam dos Santos
+ *  * @author João Vitor Lopes Fagundes
+ *  * @author Pedro Ricoy de Oliveira e Silva
+ *  * @author Wescley Júnior Gonçalves Navarro
  */
 public class Controller {
     /** Referência para o modelo de dados da aplicação. */
