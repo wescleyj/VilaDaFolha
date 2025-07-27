@@ -18,6 +18,10 @@ import principal.view.Janela;
  * @author Wescley Júnior Gonçalves Navarro
  */
 public class App {
+
+    /** Construtor padrão */
+    public App(){}
+    
     /**
      * O método principal (main) que inicia a aplicação.
      *

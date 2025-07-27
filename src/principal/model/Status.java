@@ -10,5 +10,19 @@ package principal.model;
  * @author Wescley Júnior Gonçalves Navarro
  */
 public enum Status {
-    ATIVO, AUSENTE, FALECIDO
+    /**
+     * Indica que o morador está atualmente na vila e apto para suas atividades.
+     */
+    ATIVO,
+
+    /**
+     * Indica que o morador não está na vila, geralmente por estar em uma
+     * missão de longa duração ou por outros motivos.
+     */
+    AUSENTE,
+
+    /**
+     * Indica que o morador faleceu.
+     */
+    FALECIDO
 }

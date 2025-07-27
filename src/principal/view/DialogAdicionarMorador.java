@@ -7,9 +7,14 @@ import javax.swing.*;
  * Permite a entrada de dados como nome, idade, sexo, tipo de morador (Ninja ou Civil),
  * profissão (para civis) e patente (para ninjas).
  * Os componentes gráficos são gerados pelo IntelliJ GUI Designer.
+ *
+ * @author Giovanni Estevam dos Santos
+ * @author João Vitor Lopes Fagundes
+ * @author Pedro Ricoy de Oliveira e Silva
+ * @author Wescley Júnior Gonçalves Navarro
  */
 public class DialogAdicionarMorador extends JDialog {
-    // Painel principal do diálogo de adicionar morador.
+    /** Painel principal do diálogo de adicionar morador. */
     private JPanel dialogAdicionarMorador;
     /** Botão para confirmar a adição do morador. */
     private JButton botaoOK;

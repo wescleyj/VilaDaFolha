@@ -9,6 +9,25 @@ package principal.model;
  * @author Wescley Júnior Gonçalves Navarro
  */
 public enum TipoNinja {
-    GENIN, CHUUNIN, JOUNIN, KAGE
+    /**
+     * Nível mais baixo de um ninja, geralmente recém-formados da academia.
+     */
+    GENIN,
 
+    /**
+     * Nível intermediário. Ninjas que passaram no Exame Chuunin e
+     * estão aptos a liderar equipes.
+     */
+    CHUUNIN,
+
+    /**
+     * Ninja de elite, altamente qualificado e experiente, que realiza
+     * missões de alto nível.
+     */
+    JOUNIN,
+
+    /**
+     * O mais alto título de um ninja, o líder da vila.
+     */
+    KAGE
 }

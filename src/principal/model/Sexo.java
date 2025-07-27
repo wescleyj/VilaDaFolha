@@ -10,5 +10,12 @@ package principal.model;
  * @author Wescley Júnior Gonçalves Navarro
  */
 public enum Sexo {
-        MASCULINO, FEMININO
-}
+        /**
+         * Representa o sexo masculino.
+         */
+        MASCULINO,
+
+        /**
+         * Representa o sexo feminino.
+         */
+        FEMININO}
