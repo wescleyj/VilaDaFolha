@@ -92,7 +92,7 @@ public class Controller {
      * Adiciona evento para pesquisar moradores pelo nome.
      */
     private void botaoPesquisarMorador(){
-        janela.getPesquisarButton().addActionListener(e -> {
+        janela.getPesquisarMoradorButton().addActionListener(e -> {
             String nomeBusca = JOptionPane.showInputDialog(janela, "Digite o nome do morador:");
             if(nomeBusca == null)
                 return;
@@ -118,7 +118,7 @@ public class Controller {
      * Adiciona evento para pesquisar missões pelo nome.
      */
     private void botaoPesquisarMissao() {
-        janela.getPesquisarButton1().addActionListener(e -> {
+        janela.getPesquisarMissaoButton().addActionListener(e -> {
             String nomeBusca = JOptionPane.showInputDialog(janela, "Digite o nome da missão:");
             if (nomeBusca == null) {
                 return;
@@ -147,7 +147,7 @@ public class Controller {
      * Adiciona evento para salvar os dados dos moradores e das missões.
      */
     private void botaoSalvar(){
-        janela.getSalvarButton2().addActionListener(e -> {
+        janela.getSalvarButton().addActionListener(e -> {
             model.salvarMoradores();
             //adicionar aqui a lógica para salvar as missões
         });
@@ -217,7 +217,7 @@ public class Controller {
         };
         janela.getTabelaMoradores().setModel(modelo);
 
-        janela.getTabelaMoradores2().setModel(new javax.swing.table.DefaultTableModel(dadosResumo, colunasResumo));
+        janela.getTabelaMoradoresResumo().setModel(new javax.swing.table.DefaultTableModel(dadosResumo, colunasResumo));
         janela.getNumPopulacao().setText(Integer.toString(model.getMoradores().size())); // atualiza o contador de moradores no resumo
     }
 
@@ -225,7 +225,7 @@ public class Controller {
      * Adiciona evento para deletar todos os moradores.
      */
     private void botaoDeletarMoradores(){
-        janela.getDeletarMoradoresButton().addActionListener(e -> deletarMoradores());
+        janela.getDeletarTodosMoradoresButton().addActionListener(e -> deletarMoradores());
     }
 
     /**
@@ -240,7 +240,7 @@ public class Controller {
      * Adiciona evento para remover um morador selecionado na tabela.
      */
     private void botaoRemoverMorador(){
-        janela.getRemoverButton().addActionListener(e -> {
+        janela.getRemoverMoradorButton().addActionListener(e -> {
             int linhaSelecionada = janela.getTabelaMoradores().getSelectedRow();
             if(linhaSelecionada == -1){
                 JOptionPane.showMessageDialog(janela, "Selecione um morador para remover.");
@@ -267,7 +267,7 @@ public class Controller {
      * Adiciona evento para abrir o diálogo de adição de novo morador.
      */
     private void botaoAdicionarMorador(){
-        janela.getAdicionarButton().addActionListener(e -> {
+        janela.getAdicionarMoradorButton().addActionListener(e -> {
             inicializarTelaAdicionarMorador();
         });
     }
@@ -417,14 +417,14 @@ public class Controller {
             }
         };
         janela.getTabelaMissoes().setModel(modelo);
-        janela.getTabelaMissoes2().setModel(modelo); // Atualiza a tabela de resumo também
+        janela.getTabelaMissoesResumo().setModel(modelo); // Atualiza a tabela de resumo também
     }
 
     /**
      * Adiciona evento para remover uma missão selecionada na tabela.
      */
     private void botaoRemoverMissao() {
-        janela.getRemoverButton1().addActionListener(e -> {
+        janela.getRemoverMissaoButton().addActionListener(e -> {
             int linhaSelecionada = janela.getTabelaMissoes().getSelectedRow();
             if (linhaSelecionada == -1) {
                 JOptionPane.showMessageDialog(janela, "Selecione uma missão para remover.");
@@ -450,7 +450,7 @@ public class Controller {
      * Adiciona evento para deletar todas as missões.
      */
     private void botaoDeletarMissoes() {
-        janela.getDeletarMissoesButton().addActionListener(e -> deletarMissoes());
+        janela.getDeletarTodasMissoesButton().addActionListener(e -> deletarMissoes());
     }
 
     /**
@@ -478,7 +478,7 @@ public class Controller {
      * Adiciona evento para abrir o diálogo de adição de nova missão.
      */
     private void botaoAdicionarMissao() {
-        janela.getAdicionarButton1().addActionListener(e -> {
+        janela.getAdicionarMissaoButton().addActionListener(e -> {
             inicializarTelaAdicionarMissao();
         });
     }

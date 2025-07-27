@@ -92,7 +92,7 @@
                       <text value="Missões Ativas"/>
                     </properties>
                   </component>
-                  <component id="5a0f3" class="javax.swing.JLabel">
+                  <component id="5a0f3" class="javax.swing.JLabel" binding="numMissoes">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -172,7 +172,7 @@
                       <text value="Receita Mensal"/>
                     </properties>
                   </component>
-                  <component id="4f547" class="javax.swing.JLabel">
+                  <component id="4f547" class="javax.swing.JLabel" binding="numReceita">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -196,7 +196,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="c0554" class="javax.swing.JTable" binding="tabelaMoradores2">
+                  <component id="c0554" class="javax.swing.JTable" binding="tabelaMoradoresResumo">
                     <constraints/>
                     <properties>
                       <background color="-13881030"/>
@@ -221,7 +221,7 @@
                 </properties>
                 <border type="none"/>
                 <children>
-                  <component id="24048" class="javax.swing.JTable" binding="tabelaMissoes2">
+                  <component id="24048" class="javax.swing.JTable" binding="tabelaMissoesResumo">
                     <constraints/>
                     <properties>
                       <background color="-13881030"/>
@@ -285,7 +285,7 @@
                   </component>
                 </children>
               </scrollpane>
-              <component id="c1cf8" class="javax.swing.JButton" binding="pesquisarButton" default-binding="true">
+              <component id="c1cf8" class="javax.swing.JButton" binding="pesquisarMoradorButton">
                 <constraints>
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -296,7 +296,7 @@
                   <text value="Pesquisar"/>
                 </properties>
               </component>
-              <component id="aa90" class="javax.swing.JButton" binding="removerButton" default-binding="true">
+              <component id="aa90" class="javax.swing.JButton" binding="removerMoradorButton">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -307,7 +307,7 @@
                   <text value="Remover"/>
                 </properties>
               </component>
-              <component id="17c5" class="javax.swing.JButton" binding="adicionarButton" default-binding="true">
+              <component id="17c5" class="javax.swing.JButton" binding="adicionarMoradorButton">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -379,7 +379,7 @@
                   </component>
                 </children>
               </scrollpane>
-              <component id="c2291" class="javax.swing.JButton" binding="pesquisarButton1" default-binding="true">
+              <component id="c2291" class="javax.swing.JButton" binding="pesquisarMissaoButton">
                 <constraints>
                   <grid row="3" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -390,7 +390,7 @@
                   <text value="Pesquisar"/>
                 </properties>
               </component>
-              <component id="2ef7d" class="javax.swing.JButton" binding="removerButton1" default-binding="true">
+              <component id="2ef7d" class="javax.swing.JButton" binding="removerMissaoButton">
                 <constraints>
                   <grid row="2" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -401,7 +401,7 @@
                   <text value="Remover"/>
                 </properties>
               </component>
-              <component id="a0e04" class="javax.swing.JButton" binding="adicionarButton1" default-binding="true">
+              <component id="a0e04" class="javax.swing.JButton" binding="adicionarMissaoButton">
                 <constraints>
                   <grid row="1" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -412,7 +412,7 @@
                   <text value="Adicionar"/>
                 </properties>
               </component>
-              <component id="ee33e" class="javax.swing.JButton" binding="missoesMostrarTodos">
+              <component id="ee33e" class="javax.swing.JButton" binding="missoesMostrarTodas">
                 <constraints>
                   <grid row="4" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -449,7 +449,7 @@
                   <text value="Gerenciar dados do programa"/>
                 </properties>
               </component>
-              <component id="67fa0" class="javax.swing.JButton" binding="salvarButton2" default-binding="true">
+              <component id="67fa0" class="javax.swing.JButton" binding="salvarButton">
                 <constraints>
                   <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -472,7 +472,7 @@
                   <text value="Deletar todos os dados"/>
                 </properties>
               </component>
-              <component id="83cd5" class="javax.swing.JButton" binding="deletarMissoesButton">
+              <component id="83cd5" class="javax.swing.JButton" binding="deletarTodasMissoesButton">
                 <constraints>
                   <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -484,7 +484,7 @@
                   <text value="Deletar Missões"/>
                 </properties>
               </component>
-              <component id="2e0b3" class="javax.swing.JButton" binding="deletarMoradoresButton" default-binding="true">
+              <component id="2e0b3" class="javax.swing.JButton" binding="deletarTodosMoradoresButton">
                 <constraints>
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
