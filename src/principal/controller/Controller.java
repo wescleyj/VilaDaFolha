@@ -167,7 +167,6 @@ public class Controller {
         janela.getDeletarTodosOsDadosButton().addActionListener(e -> {
             deletarMoradores();
             deletarMissoes();
-            //adicionar aqui o método para deletar todas as missões
         });
     }
 
