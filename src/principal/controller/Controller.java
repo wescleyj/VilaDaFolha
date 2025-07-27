@@ -127,7 +127,15 @@ public class Controller {
 
         }
 
-        janela.getTabelaMoradores().setModel(new javax.swing.table.DefaultTableModel(dados, colunas));
+        javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(dados, colunas) {
+            //criando um objedo do tipo DefaultTableModel para sobrescrever o método isCellEditable para impedir que
+            // o texto das células da tabela sejam editáveis
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        janela.getTabelaMoradores().setModel(modelo);
 
         janela.getTabelaMoradores2().setModel(new javax.swing.table.DefaultTableModel(dadosResumo, colunasResumo));
         janela.getNumPopulacao().setText(Integer.toString(model.getMoradores().size())); // atualiza o contador de moradores no resumo
