@@ -30,6 +30,7 @@ public class Janela extends JFrame{
     private JButton deletarMoradoresButton;
     private JLabel numPopulacao;
     private JButton moradoresMostrarTodos;
+    private JButton missoesMostrarTodos;
 
     public Janela() {
         setTitle("Sistema de Gerenciamento da aldeia da folha");
@@ -152,5 +153,9 @@ public class Janela extends JFrame{
 
     public JButton getMoradoresMostrarTodos() {
         return moradoresMostrarTodos;
+    }
+
+    public JButton getMissoesMostrarTodas() {
+        return missoesMostrarTodos;
     }
 }

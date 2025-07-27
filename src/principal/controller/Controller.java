@@ -13,6 +13,9 @@ import principal.view.DialogAdicionarMorador;
 import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.JOptionPane;
+import principal.view.DialogAdicionarMissao;
+import principal.model.Missao;
+import principal.model.NivelMissoes;
 
 /**
  * Classe responsável por controlar a interação entre a interface gráfica (Janela) e o modelo de dados (Model).
@@ -42,6 +45,7 @@ public class Controller {
     private void adicionarEventosBotoes() {
         botoesEventosMenuLateral();
         botoesEventosMorador();
+        botoesEventosMissao();
         botaoSalvar();
         botaoDeletarTodosOsDados();
     }
@@ -111,6 +115,35 @@ public class Controller {
     }
 
     /**
+     * Adiciona evento para pesquisar missões pelo nome.
+     */
+    private void botaoPesquisarMissao() {
+        janela.getPesquisarButton1().addActionListener(e -> {
+            String nomeBusca = JOptionPane.showInputDialog(janela, "Digite o nome da missão:");
+            if (nomeBusca == null) {
+                return;
+            }
+
+            if (nomeBusca.trim().isEmpty()) {
+                atualizarTabelaMissoes(model.getMissoes());
+                return;
+            }
+
+            List<Missao> encontradas = model.getMissoes().stream()
+                    .filter(m -> m.getNome().toLowerCase().contains(nomeBusca.toLowerCase()))
+                    .toList();
+
+            if (encontradas.isEmpty()) {
+                JOptionPane.showMessageDialog(janela, "Nenhuma missão encontrada.");
+            } else {
+                atualizarTabelaMissoes(encontradas);
+                JOptionPane.showMessageDialog(janela, encontradas.size() + " missão(ões) encontrada(s).");
+                janela.getMissoesMostrarTodas().setEnabled(true);
+            }
+        });
+    }
+
+    /**
      * Adiciona evento para salvar os dados dos moradores e das missões.
      */
     private void botaoSalvar(){
@@ -126,6 +159,7 @@ public class Controller {
     private void botaoDeletarTodosOsDados(){
         janela.getDeletarTodosOsDadosButton().addActionListener(e -> {
             deletarMoradores();
+            deletarMissoes();
             //adicionar aqui o método para deletar todas as missões
         });
     }
@@ -356,6 +390,152 @@ public class Controller {
     private void botaoCancelar(DialogAdicionarMorador dialogAdicionarMorador){
         dialogAdicionarMorador.getBotaoCancelar().addActionListener(e -> {
             dialogAdicionarMorador.dispose();
+        });
+    }
+
+    /**
+     * Atualiza a tabela de missões na interface com a lista fornecida.
+     * @param missoes Lista de missões a ser exibida.
+     */
+    private void atualizarTabelaMissoes(List<Missao> missoes) {
+        if (missoes == null) return;
+
+        String[] colunas = {"Nome", "Descrição", "Dificuldade"};
+        Object[][] dados = new Object[missoes.size()][colunas.length];
+
+        for (int i = 0; i < missoes.size(); i++) {
+            Missao missao = missoes.get(i);
+            dados[i][0] = missao.getNome();
+            dados[i][1] = missao.getDescricao();
+            dados[i][2] = missao.getDificuldade();
+        }
+
+        javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(dados, colunas) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        janela.getTabelaMissoes().setModel(modelo);
+        janela.getTabelaMissoes2().setModel(modelo); // Atualiza a tabela de resumo também
+    }
+
+    /**
+     * Adiciona evento para remover uma missão selecionada na tabela.
+     */
+    private void botaoRemoverMissao() {
+        janela.getRemoverButton1().addActionListener(e -> {
+            int linhaSelecionada = janela.getTabelaMissoes().getSelectedRow();
+            if (linhaSelecionada == -1) {
+                JOptionPane.showMessageDialog(janela, "Selecione uma missão para remover.");
+                return;
+            }
+
+            String nome = janela.getTabelaMissoes().getValueAt(linhaSelecionada, 0).toString();
+            Missao missaoRemover = model.getMissoes().stream()
+                    .filter(m -> m.getNome().equals(nome))
+                    .findFirst().orElse(null);
+
+            if (missaoRemover != null) {
+                model.removerMissao(missaoRemover); // Supondo que este método exista no Model
+                atualizarTabelaMissoes(model.getMissoes());
+                JOptionPane.showMessageDialog(janela, "Missão removida com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(janela, "Missão não encontrada.");
+            }
+        });
+    }
+
+    /**
+     * Adiciona evento para deletar todas as missões.
+     */
+    private void botaoDeletarMissoes() {
+        janela.getDeletarMissoesButton().addActionListener(e -> deletarMissoes());
+    }
+
+    /**
+     * Remove todas as missões do modelo e atualiza a tabela.
+     */
+    private void deletarMissoes() {
+        model.getMissoes().clear();
+        atualizarTabelaMissoes(model.getMissoes());
+    }
+
+    /**
+     * Adiciona eventos relacionados à manipulação de missões.
+     */
+    private void botoesEventosMissao() {
+        atualizarTabelaMissoes(model.getMissoes()); // Descomente esta linha
+        botaoAdicionarMissao();
+        botaoRemoverMissao();
+        botaoDeletarMissoes();
+        botaoPesquisarMissao();
+        atualizarTabelaMissoesMostrarTodas();
+        janela.getMissoesMostrarTodas().setEnabled(false);
+    }
+
+    /**
+     * Adiciona evento para abrir o diálogo de adição de nova missão.
+     */
+    private void botaoAdicionarMissao() {
+        janela.getAdicionarButton1().addActionListener(e -> {
+            inicializarTelaAdicionarMissao();
+        });
+    }
+
+    /**
+     * Inicializa e exibe a tela de diálogo para adicionar uma nova missão.
+     */
+    private void inicializarTelaAdicionarMissao() {
+        DialogAdicionarMissao dialog = new DialogAdicionarMissao();
+        botaoSalvarMissao(dialog);
+        botaoCancelarMissao(dialog);
+        dialog.pack();
+        dialog.setVisible(true);
+    }
+
+    /**
+     * Adiciona evento ao botão Salvar do diálogo de adição de missão.
+     * @param dialog O diálogo de adição de missão.
+     */
+    private void botaoSalvarMissao(DialogAdicionarMissao dialog) {
+        dialog.getBotaoSalvar().addActionListener(e -> {
+            String nome = dialog.getTextNome().getText();
+            String descricao = dialog.getTextDescricao().getText();
+
+            if (nome == null || nome.trim().isEmpty() || descricao == null || descricao.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(dialog, "Preencha todos os campos.");
+                return;
+            }
+
+            NivelMissoes dificuldade = NivelMissoes.valueOf((String) dialog.getComboNivelMissoes().getSelectedItem());
+
+            Missao novaMissao = new Missao(nome.trim(), descricao.trim(), dificuldade);
+            model.adicionarMissao(novaMissao); // Assumindo que o método existe no Model
+
+            JOptionPane.showMessageDialog(dialog, "Missão adicionada com sucesso!");
+
+            atualizarTabelaMissoes(model.getMissoes());
+        });
+    }
+
+    /**
+     * Adiciona evento ao botão Cancelar do diálogo de adição de missão.
+     * @param dialog O diálogo de adição de missão.
+     */
+    private void botaoCancelarMissao(DialogAdicionarMissao dialog) {
+        dialog.getBotaoCancelar().addActionListener(e -> {
+            dialog.dispose();
+        });
+    }
+
+    /**
+     * Adiciona evento para exibir todas as missões na tabela.
+     */
+    private void atualizarTabelaMissoesMostrarTodas() {
+        janela.getMissoesMostrarTodas().addActionListener(e -> {
+            atualizarTabelaMissoes(model.getMissoes());
+            janela.getMissoesMostrarTodas().setEnabled(false);
         });
     }
 }
