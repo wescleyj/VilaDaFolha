@@ -29,6 +29,7 @@ public class Controller {
         botoesEventosMenuLateral();
         botoesEventosMorador();
         botaoSalvar();
+        botaoDeletarTodosOsDados();
     }
 
     private void botoesEventosMenuLateral() {
@@ -60,6 +61,7 @@ public class Controller {
         botaoRemoverMorador();
         botaoPesquisarMorador();
         atualizarTabelaMoradoresMostrarTodos();
+        botaoDeletarMoradores();
     }
 
     private void botaoPesquisarMorador(){
@@ -88,6 +90,14 @@ public class Controller {
     private void botaoSalvar(){
         janela.getSalvarButton2().addActionListener(e -> {
             model.salvarMoradores();
+            //adicionar aqui a lógica para salvar as missões
+        });
+    }
+
+    private void botaoDeletarTodosOsDados(){
+        janela.getDeletarTodosOsDadosButton().addActionListener(e -> {
+            deletarMoradores();
+            //adicionar aqui o método para deletar todas as missões
         });
     }
 
@@ -139,6 +149,15 @@ public class Controller {
 
         janela.getTabelaMoradores2().setModel(new javax.swing.table.DefaultTableModel(dadosResumo, colunasResumo));
         janela.getNumPopulacao().setText(Integer.toString(model.getMoradores().size())); // atualiza o contador de moradores no resumo
+    }
+
+    private void botaoDeletarMoradores(){
+        janela.getDeletarMoradoresButton().addActionListener(e -> deletarMoradores());
+    }
+
+    private void deletarMoradores(){
+        model.getMoradores().clear();
+        atualizarTabelaMoradores(model.getMoradores());
     }
 
     private void botaoRemoverMorador(){
