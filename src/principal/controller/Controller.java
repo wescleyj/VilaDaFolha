@@ -2,8 +2,17 @@ package principal.controller;
 
 import principal.model.Model;
 import principal.view.Janela;
+import principal.model.Ninja;
+import principal.model.Sexo;
+import principal.model.Morador;
+import principal.model.Civil;
+import principal.model.Status;
+import principal.model.TipoNinja;
+import principal.view.DialogAdicionarMorador;
 
 import java.awt.CardLayout;
+import java.util.List;
+import javax.swing.JOptionPane;
 
 public class Controller {
     private Model model;
@@ -35,6 +44,195 @@ public class Controller {
         janela.getGerenciarButton().addActionListener(e -> {
             CardLayout cl = (CardLayout) (janela.getTelasPrincipais().getLayout());
             cl.show(janela.getTelasPrincipais(), "gerenciar");
+        });
+
+        botoesEventosMorador();
+    }
+
+    private void botoesEventosMorador(){
+        atualizarTabelaMoradores(model.getMoradores()); //inicializa a tabela com todos os moradores
+
+        botaoAdicionarMorador();
+        botaoRemoverMorador();
+        botaoPesquisarMorador();
+    }
+
+    private void botaoPesquisarMorador(){
+        janela.getPesquisarButton().addActionListener(e -> {
+            String nomeBusca = JOptionPane.showInputDialog(janela, "Digite o nome do morador:");
+            if(nomeBusca == null)
+                return;
+
+            if(nomeBusca.trim().isEmpty()) {
+                atualizarTabelaMoradores(model.getMoradores());
+                return;
+            }
+
+            List<Morador> encontrados = model.getMoradores().stream().filter(m -> m.getNome().toLowerCase().contains(nomeBusca.toLowerCase())).toList();
+
+            if(encontrados.isEmpty())
+                JOptionPane.showMessageDialog(janela, "Nenhum morador encontrado.");
+            else {
+                atualizarTabelaMoradores(encontrados);
+                JOptionPane.showMessageDialog(janela, encontrados.size() + " morador(es) encontrado(s).");
+            }
+
+        });
+    }
+
+    private void atualizarTabelaMoradores(List<Morador> moradores){
+        if(moradores == null)
+            return;
+
+        String[] colunas = {"Nome", "Idade", "Sexo", "Status", "Detalhes"};
+        Object[][] dados = new Object[moradores.size()][colunas.length];
+
+        for(int i = 0; i < moradores.size(); i++) {
+            Morador morador = moradores.get(i);
+            dados[i][0] = morador.getNome();
+            dados[i][1] = morador.getIdade();
+            dados[i][2] = morador.getSexo();
+            dados[i][3] = morador.getStatus();
+            if(morador instanceof Ninja)
+                dados[i][4] = ((Ninja) morador).getTipo();
+            else
+                dados[i][4] = ((Civil) morador).getProfissao();
+        }
+
+        janela.getTabelaMoradores().setModel(new javax.swing.table.DefaultTableModel(dados, colunas));
+        model.salvarMoradores(); //salva sempre que a tabela atualizar
+
+    }
+
+    private void botaoRemoverMorador(){
+        janela.getRemoverButton().addActionListener(e -> {
+            int linhaSelecionada = janela.getTabelaMoradores().getSelectedRow();
+            if(linhaSelecionada == -1){
+                JOptionPane.showMessageDialog(janela, "Selecione um morador para remover.");
+                return;
+            }
+
+            String nome = janela.getTabelaMoradores().getValueAt(linhaSelecionada, 0).toString();
+
+            Morador moradorRemover =
+                    model.getMoradores().stream().filter(m-> m.getNome().equals(nome)).findFirst().orElse(null);
+
+            if(moradorRemover != null){
+                model.removerMorador(moradorRemover);
+                atualizarTabelaMoradores(model.getMoradores());
+                JOptionPane.showMessageDialog(janela, "Morador removido com sucesso!");
+            } else
+                JOptionPane.showMessageDialog(janela, "Morador não encontrado.");
+
+
+        });
+    }
+
+    private void botaoAdicionarMorador(){
+        janela.getAdicionarButton().addActionListener(e -> {
+            inicializarTelaAdicionarMorador();
+        });
+    }
+
+    private void inicializarTelaAdicionarMorador(){ //configurando o jdialog da tela de adicionar um novo morador
+        DialogAdicionarMorador dialogAdicionarMorador = new DialogAdicionarMorador();
+
+        atualizarVisibilidadeCampos(dialogAdicionarMorador);
+
+        visibilidadeComboBox(dialogAdicionarMorador);
+        botaoOk(dialogAdicionarMorador);
+        botaoCancelar(dialogAdicionarMorador);
+
+        dialogAdicionarMorador.pack();
+        dialogAdicionarMorador.setVisible(true);
+    }
+
+    private void visibilidadeComboBox(DialogAdicionarMorador dialogAdicionarMorador){
+        dialogAdicionarMorador.getTipoMorador().addActionListener(e -> {
+            atualizarVisibilidadeCampos(dialogAdicionarMorador);
+        });
+    }
+
+    private void atualizarVisibilidadeCampos(DialogAdicionarMorador dialogAdicionarMorador){ // método para atualizar a visibilidade dos campos Patente do ninja e Profissão do civil
+        String tipoSelecionado = (String) dialogAdicionarMorador.getTipoMorador().getSelectedItem();
+        boolean ninja = "Ninja".equals(tipoSelecionado);
+
+        dialogAdicionarMorador.getLabelPatente().setVisible(ninja);
+        dialogAdicionarMorador.getTextTipoNinja().setVisible(ninja);
+
+        dialogAdicionarMorador.getLabelProfissao().setVisible(!ninja);
+        dialogAdicionarMorador.getTextProfissaoCivil().setVisible(!ninja);
+    }
+
+    private void botaoOk(DialogAdicionarMorador dialogAdicionarMorador){
+        dialogAdicionarMorador.getBotaoOK().addActionListener(e -> {
+            String nome = dialogAdicionarMorador.getTextNome().getText();
+            String idadeStr = dialogAdicionarMorador.getTextIdade().getText();
+
+            if (nome == null || idadeStr == null || nome.trim().isEmpty() || idadeStr.trim().isEmpty()) {
+                JOptionPane.showMessageDialog(dialogAdicionarMorador, "Preencha todos os campos obrigatórios.");
+                return;
+            }
+
+            nome = nome.trim();
+            idadeStr = idadeStr.trim();
+
+            int idade;
+            try {
+                idade = Integer.parseInt(idadeStr);
+            } catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(dialogAdicionarMorador, "Idade inválida.");
+                return;
+            }
+
+            String sexoSelecionado = (String) dialogAdicionarMorador.getSexoMorador().getSelectedItem();
+
+            Sexo sexo = "F".equals(sexoSelecionado)? Sexo.FEMININO : Sexo.MASCULINO;
+
+            // se a patente está visível, é um ninja
+            if(dialogAdicionarMorador.getLabelPatente().isVisible()){
+                String strTipoNinja = (String) dialogAdicionarMorador.getTextTipoNinja().getSelectedItem();
+                TipoNinja tipoNinja;
+
+                switch(strTipoNinja){
+                    case "GENIN":
+                        tipoNinja = TipoNinja.GENIN;
+                        break;
+                    case "CHUUNIN":
+                        tipoNinja = TipoNinja.CHUUNIN;
+                        break;
+                    case "JOUNIN":
+                        tipoNinja = TipoNinja.JOUNIN;
+                        break;
+                    case "KAGE":
+                        tipoNinja = TipoNinja.KAGE;
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Tipo de ninja inválido: " + strTipoNinja);
+                }
+
+                Ninja morador = new Ninja(nome, idade, sexo, Status.ATIVO, tipoNinja);
+                model.adicionarMorador(morador);
+            } else { // se a patente não está visível, é um civil
+                String profissaoCivil = dialogAdicionarMorador.getTextProfissaoCivil().getText();
+
+                if(profissaoCivil == null || profissaoCivil.isEmpty()){
+                    JOptionPane.showMessageDialog(dialogAdicionarMorador, "Preencha todos os campos obrigatórios");
+                    return;
+                }
+
+                Civil morador = new Civil(nome, idade, sexo, Status.ATIVO, profissaoCivil.trim());
+                model.adicionarMorador(morador);
+            }
+            JOptionPane.showMessageDialog(dialogAdicionarMorador, "Morador adicionado com sucesso!");
+            atualizarTabelaMoradores(model.getMoradores());
+            dialogAdicionarMorador.dispose();
+        });
+    }
+
+    private void botaoCancelar(DialogAdicionarMorador dialogAdicionarMorador){
+        dialogAdicionarMorador.getBotaoCancelar().addActionListener(e -> {
+            dialogAdicionarMorador.dispose();
         });
     }
 }
