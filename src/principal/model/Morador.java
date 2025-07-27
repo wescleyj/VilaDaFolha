@@ -1,11 +1,22 @@
 package principal.model;
 
+/**
+ * Classe abstrata que define os campos comuns a todos os moradores da vila.
+ * Deve ser estendida por tipos específicos de moradores.
+ */
 public abstract class Morador {
     private String nome;
     private int idade;
     private Sexo sexo;
     private Status status;
 
+    /**
+     * Construtor da classe Morador.
+     * @param nome Nome do morador.
+     * @param idade Idade do morador.
+     * @param sexo Sexo do morador.
+     * @param status Status do morador.
+     */
     public Morador(String nome, int idade, Sexo sexo, Status status) {
         this.nome = nome;
         this.idade = idade;
@@ -13,27 +24,36 @@ public abstract class Morador {
         this.status = status;
     }
 
+    /**
+     * Retorna o nome do morador.
+     * @return Nome do morador.
+     */
     public String getNome() {
         return nome;
     }
 
+    /**
+     * Retorna a idade do morador.
+     * @return Idade do morador.
+     */
     public int getIdade() {
         return idade;
     }
 
+    /**
+     * Retorna o sexo do morador.
+     * @return Sexo do morador.
+     */
     public Sexo getSexo() {
         return sexo;
     }
 
+    /**
+     * Retorna o status do morador.
+     * @return Status do morador.
+     */
     public Status getStatus() {
         return status;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
-    }
-
-    public void setStatus(Status status) {
-        this.status = status;
-    }
 }
