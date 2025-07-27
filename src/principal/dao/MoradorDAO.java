@@ -15,12 +15,24 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Classe responsável pelo acesso e persistência dos dados dos moradores da vila.
+ * Permite salvar e carregar informações de moradores (Ninja e Civil) em um arquivo CSV.
+ */
 public class MoradorDAO {
     private final String ARQUIVO = "moradores.csv";
 
+    /**
+     * Construtor padrão da classe MoradorDAO.
+     */
     public MoradorDAO() {
     }
 
+    /**
+     * Salva a lista de moradores no arquivo CSV.
+     * Cada morador é salvo em uma linha, identificando se é Ninja ou Civil.
+     * @param moradores Lista de moradores a ser salva.
+     */
     public void salvarMoradores(List<Morador> moradores) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(ARQUIVO))) {
             for (Morador morador : moradores) {
@@ -42,6 +54,12 @@ public class MoradorDAO {
         }
     }
 
+    /**
+     * Carrega a lista de moradores a partir do arquivo CSV.
+     * Cada linha do arquivo é convertida em um objeto Ninja ou Civil.
+     * Linhas com erro de formatação são ignoradas.
+     * @return Lista de moradores carregada do arquivo.
+     */
     public List<Morador> carregarMoradores() {
         List<Morador> moradores = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(ARQUIVO))) {

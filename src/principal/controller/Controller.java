@@ -14,17 +14,31 @@ import java.awt.CardLayout;
 import java.util.List;
 import javax.swing.JOptionPane;
 
+/**
+ * Classe responsável por controlar a interação entre a interface gráfica (Janela) e o modelo de dados (Model).
+ * Gerencia eventos dos botões, atualização de tabelas e lógica de adição, remoção, pesquisa e exibição de moradores.
+ */
 public class Controller {
     private final Model model;
     private final Janela janela;
 
+    /**
+     * Construtor do Controller.
+     * Inicializa o modelo, a janela e adiciona os eventos aos botões.
+     * @param model Modelo de dados da aplicação.
+     * @param janela Interface gráfica principal.
+     */
     public Controller(Model model, Janela janela) {
         this.model = model;
         this.janela = janela;
         adicionarEventosBotoes();
     }
 
+
     // Adicionando eventos nos botões de mudança de tela e logica de controle de mudança de panels
+    /**
+     * Adiciona os eventos aos botões principais da interface.
+     */
     private void adicionarEventosBotoes() {
         botoesEventosMenuLateral();
         botoesEventosMorador();
@@ -32,6 +46,9 @@ public class Controller {
         botaoDeletarTodosOsDados();
     }
 
+    /**
+     * Adiciona eventos aos botões do menu lateral para troca de telas.
+     */
     private void botoesEventosMenuLateral() {
         janela.getVisaoGeralButton().addActionListener(e -> {
             CardLayout cl = (CardLayout) (janela.getTelasPrincipais().getLayout());
@@ -54,6 +71,9 @@ public class Controller {
         });
     }
 
+    /**
+     * Adiciona eventos relacionados à manipulação de moradores.
+     */
     private void botoesEventosMorador(){
         atualizarTabelaMoradores(model.getMoradores()); //inicializa a tabela com todos os moradores
 
@@ -64,6 +84,9 @@ public class Controller {
         botaoDeletarMoradores();
     }
 
+    /**
+     * Adiciona evento para pesquisar moradores pelo nome.
+     */
     private void botaoPesquisarMorador(){
         janela.getPesquisarButton().addActionListener(e -> {
             String nomeBusca = JOptionPane.showInputDialog(janela, "Digite o nome do morador:");
@@ -87,6 +110,9 @@ public class Controller {
         });
     }
 
+    /**
+     * Adiciona evento para salvar os dados dos moradores e das missões.
+     */
     private void botaoSalvar(){
         janela.getSalvarButton2().addActionListener(e -> {
             model.salvarMoradores();
@@ -94,6 +120,9 @@ public class Controller {
         });
     }
 
+    /**
+     * Adiciona evento para deletar todos os dados dos moradores e das missões.
+     */
     private void botaoDeletarTodosOsDados(){
         janela.getDeletarTodosOsDadosButton().addActionListener(e -> {
             deletarMoradores();
@@ -101,6 +130,9 @@ public class Controller {
         });
     }
 
+    /**
+     * Adiciona evento para exibir todos os moradores na tabela.
+     */
     private void atualizarTabelaMoradoresMostrarTodos(){
         janela.getMoradoresMostrarTodos().addActionListener(e -> {
             atualizarTabelaMoradores(model.getMoradores());
@@ -108,6 +140,10 @@ public class Controller {
         });
     }
 
+    /**
+     * Atualiza a tabela de moradores na interface com a lista fornecida.
+     * @param moradores Lista de moradores a ser exibida.
+     */
     private void atualizarTabelaMoradores(List<Morador> moradores){
         if(moradores == null)
             return;
@@ -151,15 +187,24 @@ public class Controller {
         janela.getNumPopulacao().setText(Integer.toString(model.getMoradores().size())); // atualiza o contador de moradores no resumo
     }
 
+    /**
+     * Adiciona evento para deletar todos os moradores.
+     */
     private void botaoDeletarMoradores(){
         janela.getDeletarMoradoresButton().addActionListener(e -> deletarMoradores());
     }
 
+    /**
+     * Remove todos os moradores do modelo e atualiza a tabela.
+     */
     private void deletarMoradores(){
         model.getMoradores().clear();
         atualizarTabelaMoradores(model.getMoradores());
     }
 
+    /**
+     * Adiciona evento para remover um morador selecionado na tabela.
+     */
     private void botaoRemoverMorador(){
         janela.getRemoverButton().addActionListener(e -> {
             int linhaSelecionada = janela.getTabelaMoradores().getSelectedRow();
@@ -184,12 +229,18 @@ public class Controller {
         });
     }
 
+    /**
+     * Adiciona evento para abrir o diálogo de adição de novo morador.
+     */
     private void botaoAdicionarMorador(){
         janela.getAdicionarButton().addActionListener(e -> {
             inicializarTelaAdicionarMorador();
         });
     }
 
+    /**
+     * Inicializa e exibe a tela de diálogo para adicionar um novo morador.
+     */
     private void inicializarTelaAdicionarMorador(){ //configurando o jdialog da tela de adicionar um novo morador
         DialogAdicionarMorador dialogAdicionarMorador = new DialogAdicionarMorador();
 
@@ -203,12 +254,20 @@ public class Controller {
         dialogAdicionarMorador.setVisible(true);
     }
 
+    /**
+     * Adiciona evento para alternar a visibilidade dos campos conforme o tipo de morador selecionado.
+     * @param dialogAdicionarMorador Diálogo de adição de morador.
+     */
     private void visibilidadeComboBox(DialogAdicionarMorador dialogAdicionarMorador){
         dialogAdicionarMorador.getTipoMorador().addActionListener(e -> {
             atualizarVisibilidadeCampos(dialogAdicionarMorador);
         });
     }
 
+    /**
+     * Atualiza a visibilidade dos campos de patente e profissão conforme o tipo de morador selecionado.
+     * @param dialogAdicionarMorador Diálogo de adição de morador.
+     */
     private void atualizarVisibilidadeCampos(DialogAdicionarMorador dialogAdicionarMorador){ // método para atualizar a visibilidade dos campos Patente do ninja e Profissão do civil
         String tipoSelecionado = (String) dialogAdicionarMorador.getTipoMorador().getSelectedItem();
         boolean ninja = "Ninja".equals(tipoSelecionado);
@@ -220,6 +279,10 @@ public class Controller {
         dialogAdicionarMorador.getTextProfissaoCivil().setVisible(!ninja);
     }
 
+    /**
+     * Adiciona evento ao botão OK do diálogo de adição de morador, realizando a validação e cadastro.
+     * @param dialogAdicionarMorador Diálogo de adição de morador.
+     */
     private void botaoOk(DialogAdicionarMorador dialogAdicionarMorador){
         dialogAdicionarMorador.getBotaoOK().addActionListener(e -> {
             String nome = dialogAdicionarMorador.getTextNome().getText();
@@ -286,6 +349,10 @@ public class Controller {
         });
     }
 
+    /**
+     * Adiciona evento ao botão Cancelar do diálogo de adição de morador.
+     * @param dialogAdicionarMorador Diálogo de adição de morador.
+     */
     private void botaoCancelar(DialogAdicionarMorador dialogAdicionarMorador){
         dialogAdicionarMorador.getBotaoCancelar().addActionListener(e -> {
             dialogAdicionarMorador.dispose();
