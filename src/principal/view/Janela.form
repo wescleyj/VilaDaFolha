@@ -57,7 +57,7 @@
                       <text value="População"/>
                     </properties>
                   </component>
-                  <component id="eb0a9" class="javax.swing.JLabel">
+                  <component id="eb0a9" class="javax.swing.JLabel" binding="numPopulacao">
                     <constraints>
                       <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                     </constraints>
@@ -191,6 +191,7 @@
                 </constraints>
                 <properties>
                   <background color="-13881030"/>
+                  <enabled value="true"/>
                   <foreground color="-1381654"/>
                 </properties>
                 <border type="none"/>
@@ -199,6 +200,10 @@
                     <constraints/>
                     <properties>
                       <background color="-13881030"/>
+                      <cellSelectionEnabled value="false"/>
+                      <columnSelectionAllowed value="false"/>
+                      <enabled value="false"/>
+                      <font name="Inter" size="16"/>
                       <foreground color="-1381654"/>
                       <gridColor color="-11906722"/>
                       <selectionForeground color="-14803426"/>
@@ -208,7 +213,7 @@
               </scrollpane>
               <scrollpane id="36166">
                 <constraints>
-                  <grid row="4" column="3" row-span="1" col-span="3" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="4" column="3" row-span="1" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-13881030"/>
@@ -220,6 +225,8 @@
                     <constraints/>
                     <properties>
                       <background color="-13881030"/>
+                      <enabled value="false"/>
+                      <font name="Inter" size="16"/>
                       <foreground color="-1381654"/>
                       <gridColor color="-11906722"/>
                       <selectionForeground color="-14803426"/>
@@ -229,7 +236,7 @@
               </scrollpane>
             </children>
           </grid>
-          <grid id="cbd3d" binding="TelaMoradores" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="cbd3d" binding="TelaMoradores" layout-manager="GridLayoutManager" row-count="5" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="10" left="10" bottom="10" right="10"/>
             <constraints>
               <card name="Card2"/>
@@ -256,7 +263,7 @@
               </component>
               <scrollpane id="47672">
                 <constraints>
-                  <grid row="1" column="0" row-span="3" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="4" col-span="1" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-13881030"/>
@@ -269,6 +276,8 @@
                     <constraints/>
                     <properties>
                       <background color="-13881030"/>
+                      <enabled value="false"/>
+                      <font name="Inter" size="16"/>
                       <foreground color="-1381654"/>
                       <gridColor color="-11906722"/>
                       <selectionForeground color="-14803426"/>
@@ -309,9 +318,20 @@
                   <text value="Adicionar"/>
                 </properties>
               </component>
+              <component id="93fbb" class="javax.swing.JButton" binding="moradoresMostrarTodos">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-9728477"/>
+                  <font name="Inter" size="14"/>
+                  <foreground color="-1"/>
+                  <text value="Mostrar Todos"/>
+                </properties>
+              </component>
             </children>
           </grid>
-          <grid id="a7258" binding="TelaMissoes" layout-manager="GridLayoutManager" row-count="6" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="a7258" binding="TelaMissoes" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="10" left="10" bottom="10" right="10"/>
             <constraints>
               <card name="Card3"/>
@@ -337,7 +357,7 @@
               </component>
               <scrollpane id="95ea7">
                 <constraints>
-                  <grid row="1" column="0" row-span="5" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
+                  <grid row="1" column="0" row-span="6" col-span="4" vsize-policy="7" hsize-policy="7" anchor="0" fill="3" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
                   <background color="-13881030"/>
@@ -350,6 +370,8 @@
                     <constraints/>
                     <properties>
                       <background color="-13881030"/>
+                      <enabled value="false"/>
+                      <font name="Inter" size="16"/>
                       <foreground color="-1381654"/>
                       <gridColor color="-11906722"/>
                       <selectionForeground color="-14803426"/>
