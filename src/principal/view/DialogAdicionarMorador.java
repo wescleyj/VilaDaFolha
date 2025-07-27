@@ -9,23 +9,41 @@ import javax.swing.*;
  * Os componentes gráficos são gerados pelo IntelliJ GUI Designer.
  */
 public class DialogAdicionarMorador extends JDialog {
+    // Painel principal do diálogo de adicionar morador.
     private JPanel dialogAdicionarMorador;
+    /** Botão para confirmar a adição do morador. */
     private JButton botaoOK;
+    /** Botão para cancelar a adição do morador. */
     private JButton botaoCancelar;
+    /** Painel que agrupa os botões de ação. */
     private JPanel botoes;
+    /** Painel de espaçamento para layout. */
     private JPanel espaco;
+    /** Painel principal de entrada de dados do diálogo. */
     private JPanel painelPrincipal;
+    /** Combo box para seleção do tipo de morador (Ninja ou Civil). */
     private JComboBox tipoMorador;
+    /** Combo box para seleção do sexo do morador. */
     private JComboBox sexoMorador;
+    /** Campo de texto para o nome do morador. */
     private JTextField textNome;
+    /** Campo de texto para a idade do morador. */
     private JTextField textIdade;
+    /** Campo de texto para a profissão do civil. */
     private JTextField textProfissaoCivil;
+    /** Combo box para seleção da patente do ninja. */
     private JComboBox textTipoNinja;
+    /** Rótulo para o campo de patente. */
     private JLabel labelPatente;
+    /** Rótulo para o campo de tipo de morador. */
     private JLabel labelTipo;
+    /** Rótulo para o campo de nome. */
     private JLabel labelNome;
+    /** Rótulo para o campo de idade. */
     private JLabel labelIdade;
+    /** Rótulo para o campo de sexo. */
     private JLabel labelSexo;
+    /** Rótulo para o campo de profissão. */
     private JLabel labelProfissao;
 
     /**

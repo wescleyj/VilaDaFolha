@@ -4,6 +4,8 @@ package principal.model;
  * Representa um morador ninja, herdando os campos comuns de Morador e adicionando o tipo de ninja.
  */
 public class Ninja extends Morador{
+    /** Patente do ninja.
+     */
     private TipoNinja tipo;
 
     /**

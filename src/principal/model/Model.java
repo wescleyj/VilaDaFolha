@@ -10,13 +10,17 @@ import java.util.List;
  * Representa o modelo principal da aplicação, contendo a lista de moradores e o DAO responsável pela persistência.
  */
 public class Model {
+    /** Lista de moradores gerenciada pelo modelo. */
     private List<Morador> moradores = new ArrayList<>();
+    /** Lista de missões gerenciada pelo modelo. */
     private List<Missao> missoes = new ArrayList<>();
+    /** DAO responsável pela persistência dos moradores. */
     private MoradorDAO moradorDAO = new MoradorDAO();
+    /** DAO responsável pela persistência das missões. */
     private MissaoDAO missaoDAO = new MissaoDAO();
 
     /**
-     * Cria uma nova instância de Model e inicializa a lista de moradores com os dados carregados do DAO.
+     * Cria uma nova instância de Model e inicializa a lista de moradores e das missões com os dados carregados do DAO.
      */
     public Model(){
         moradores = moradorDAO.carregarMoradores();

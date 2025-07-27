@@ -20,6 +20,8 @@ import java.util.List;
  * Permite salvar e carregar informações de moradores (Ninja e Civil) em um arquivo CSV.
  */
 public class MoradorDAO {
+    /** Nome do arquivo que armazena os moradores
+     */
     private final String ARQUIVO = "moradores.csv";
 
     /**
