@@ -28,6 +28,7 @@ public class Controller {
     private void adicionarEventosBotoes() {
         botoesEventosMenuLateral();
         botoesEventosMorador();
+        botaoSalvar();
     }
 
     private void botoesEventosMenuLateral() {
@@ -84,6 +85,12 @@ public class Controller {
         });
     }
 
+    private void botaoSalvar(){
+        janela.getSalvarButton2().addActionListener(e -> {
+            model.salvarMoradores();
+        });
+    }
+
     private void atualizarTabelaMoradoresMostrarTodos(){
         janela.getMoradoresMostrarTodos().addActionListener(e -> {
             atualizarTabelaMoradores(model.getMoradores());
@@ -124,8 +131,6 @@ public class Controller {
 
         janela.getTabelaMoradores2().setModel(new javax.swing.table.DefaultTableModel(dadosResumo, colunasResumo));
         janela.getNumPopulacao().setText(Integer.toString(model.getMoradores().size())); // atualiza o contador de moradores no resumo
-
-        model.salvarMoradores(); //salva sempre que a tabela atualizar
     }
 
     private void botaoRemoverMorador(){
