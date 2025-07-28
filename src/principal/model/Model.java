@@ -65,7 +65,7 @@ public class Model {
     /**
      * Salva todas as missoes da lista no arquivo CSV.
      */
-    public void salvarMissoes(){
+    public void salvarMissoes() {
         missaoDAO.salvarMissoes(missoes);
     }
 
@@ -91,9 +91,5 @@ public class Model {
      */
     public void removerMissao(Missao missao) {
         missoes.remove(missao);
-    }
-
-    public void SalvarMissoes() {
-        missaoDAO.salvarMissoes(missoes);
     }
 }

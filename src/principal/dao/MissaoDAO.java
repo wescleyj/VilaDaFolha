@@ -20,6 +20,9 @@ import java.util.List;
  * @author Wescley Júnior Gonçalves Navarro
  */
 public class MissaoDAO {
+    /**
+     *  Constante com o nome do arquivo de salvamento.
+     */
     private final String ARQUIVO = "missoes.csv";
 
     /**

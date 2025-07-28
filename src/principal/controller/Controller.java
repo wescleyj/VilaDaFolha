@@ -44,8 +44,6 @@ public class Controller {
         adicionarEventosBotoes();
     }
 
-
-    // Adicionando eventos nos botões de mudança de tela e logica de controle de mudança de panels
     /**
      * Adiciona os eventos aos botões principais da interface.
      */
@@ -156,8 +154,7 @@ public class Controller {
     private void botaoSalvar(){
         janela.getSalvarButton().addActionListener(e -> {
             model.salvarMoradores();
-            model.SalvarMissoes();
-            //adicionar aqui a lógica para salvar as missões
+            model.salvarMissoes();
         });
     }
 
@@ -215,8 +212,8 @@ public class Controller {
         }
 
         javax.swing.table.DefaultTableModel modelo = new javax.swing.table.DefaultTableModel(dados, colunas) {
-            //criando um objedo do tipo DefaultTableModel para sobrescrever o método isCellEditable para impedir que
-            // o texto das células da tabela sejam editáveis
+            /* Criando um objedo do tipo DefaultTableModel para sobrescrever o método isCellEditable para impedir que
+             o texto das células da tabela sejam editáveis */
             @Override
             public boolean isCellEditable(int row, int column) {
                 return false;
@@ -282,7 +279,7 @@ public class Controller {
     /**
      * Inicializa e exibe a tela de diálogo para adicionar um novo morador.
      */
-    private void inicializarTelaAdicionarMorador(){ //configurando o jdialog da tela de adicionar um novo morador
+    private void inicializarTelaAdicionarMorador(){
         DialogAdicionarMorador dialogAdicionarMorador = new DialogAdicionarMorador();
 
         atualizarVisibilidadeCampos(dialogAdicionarMorador);
