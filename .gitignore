@@ -1,12 +1,9 @@
-# Arquivos de dados gerados pela aplicação
-moradores.csv
-missoes.csv
-
 # Arquivos compilados do Java
 *.class
 target/
 build/
 out/
+Documentação/
 
 # Logs
 *.log
